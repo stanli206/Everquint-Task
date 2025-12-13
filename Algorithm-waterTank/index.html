@@ -1,0 +1,153 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Water Tank Problem</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      input {
+        width: 300px;
+        padding: 5px;
+      }
+      button {
+        padding: 6px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Water Tank Problem</h2>
+
+    <p>Enter heights (comma separated)</p>
+    <input id="input" value="0,4,0,0,0,6,0,6,4,0" />
+    <button onclick="calculate()">Calculate</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+      function trapWater(height) {
+        let totalWater = 0;
+
+        for (let i = 0; i < height.length; i++) {
+          let leftMax = 0,
+            rightMax = 0;
+
+          for (let l = 0; l <= i; l++) {
+            leftMax = Math.max(leftMax, height[l]);
+          }
+
+          for (let r = i; r < height.length; r++) {
+            rightMax = Math.max(rightMax, height[r]);
+          }
+
+          let water = Math.min(leftMax, rightMax) - height[i];
+          if (water > 0) totalWater += water;
+        }
+
+        return totalWater;
+      }
+
+      function calculate() {
+        const input = document.getElementById("input").value;
+        const arr = input.split(",").map(Number);
+        const result = trapWater(arr);
+        document.getElementById("result").innerText =
+          "Total Water Stored: " + result + " Units";
+      }
+    </script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Water Tank - Table View</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      td {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #999;
+      }
+
+      .block {
+        background-color: yellow;
+      }
+
+      .water {
+        background-color: deepskyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Water Tank Problem (Table View)</h2>
+
+    <p>Enter heights (comma separated)</p>
+    <input id="input" value="0,4,0,0,0,6,0,6,4,0" />
+    <button onclick="draw()">Draw</button>
+
+    <h3 id="result"></h3>
+    <div id="table-container"></div>
+
+    <script>
+      function trapWater(height) {
+        let n = height.length;
+        let water = new Array(n).fill(0);
+
+        for (let i = 0; i < n; i++) {
+          let leftMax = 0,
+            rightMax = 0;
+
+          for (let l = 0; l <= i; l++) leftMax = Math.max(leftMax, height[l]);
+
+          for (let r = i; r < n; r++) rightMax = Math.max(rightMax, height[r]);
+
+          water[i] = Math.max(0, Math.min(leftMax, rightMax) - height[i]);
+        }
+        return water;
+      }
+
+      function draw() {
+        const arr = document
+          .getElementById("input")
+          .value.split(",")
+          .map(Number);
+        const water = trapWater(arr);
+
+        const maxHeight = Math.max(...arr.map((h, i) => h + water[i]));
+        let table = "<table>";
+
+        for (let level = maxHeight; level > 0; level--) {
+          table += "<tr>";
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] >= level) {
+              table += '<td class="block"></td>';
+            } else if (arr[i] + water[i] >= level) {
+              table += '<td class="water"></td>';
+            } else {
+              table += "<td></td>";
+            }
+          }
+          table += "</tr>";
+        }
+
+        table += "</table>";
+
+        document.getElementById("table-container").innerHTML = table;
+
+        const total = water.reduce((a, b) => a + b, 0);
+        document.getElementById("result").innerText =
+          "Total Water Stored: " + total + " Units";
+      }
+    </script>
+  </body>
+</html>

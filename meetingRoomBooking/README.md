@@ -32,6 +32,51 @@ architecture for better readability and maintainability.
 
 ---
 
+## 📂 Project Structure
+
+```
+meetingroombooking/
+│
+├── index.js
+├── src/
+│   ├── app.js
+│   │
+│   ├── routes/
+│   │   ├── room.routes.js
+│   │   ├── booking.routes.js
+│   │   └── report.routes.js
+│   │
+│   ├── controllers/
+│   │   ├── room.controller.js
+│   │   ├── booking.controller.js
+│   │   └── report.controller.js
+│   │
+│   ├── services/
+│   │   ├── room.service.js
+│   │   ├── booking.service.js
+│   │   └── report.service.js
+│   │
+│   ├── models/
+│   │   ├── room.model.js
+│   │   ├── booking.model.js
+│   │   └── idempotency.model.js
+│   │
+│   └── utils/
+│       ├── time.util.js
+│       └── error.util.js
+│
+├── tests/
+│   ├── booking.test.js
+│   ├── cancellation.test.js
+│   └── report.test.js
+│
+├── DESIGN.md
+├── package.json
+├── .env.example
+└── README.md
+```
+
+---
 ## 🔗 API Endpoints
 
 ### 🏢 Rooms
@@ -186,51 +231,6 @@ Example:
 }
 ```
 
----
-
-## 📂 Project Structure
-
-```
-meetingroombooking/
-│
-├── index.js
-├── src/
-│   ├── app.js
-│   │
-│   ├── routes/
-│   │   ├── room.routes.js
-│   │   ├── booking.routes.js
-│   │   └── report.routes.js
-│   │
-│   ├── controllers/
-│   │   ├── room.controller.js
-│   │   ├── booking.controller.js
-│   │   └── report.controller.js
-│   │
-│   ├── services/
-│   │   ├── room.service.js
-│   │   ├── booking.service.js
-│   │   └── report.service.js
-│   │
-│   ├── models/
-│   │   ├── room.model.js
-│   │   ├── booking.model.js
-│   │   └── idempotency.model.js
-│   │
-│   └── utils/
-│       ├── time.util.js
-│       └── error.util.js
-│
-├── tests/
-│   ├── booking.test.js
-│   ├── cancellation.test.js
-│   └── report.test.js
-│
-├── DESIGN.md
-├── package.json
-├── .env.example
-└── README.md
-```
 
 ---
 

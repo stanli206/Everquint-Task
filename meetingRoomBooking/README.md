@@ -32,104 +32,6 @@ architecture for better readability and maintainability.
 
 ---
 
-## 📂 Project Structure
-
-```
-meetingroombooking/
-│
-├── index.js
-├── src/
-│   ├── app.js
-│   │
-│   ├── routes/
-│   │   ├── room.routes.js
-│   │   ├── booking.routes.js
-│   │   └── report.routes.js
-│   │
-│   ├── controllers/
-│   │   ├── room.controller.js
-│   │   ├── booking.controller.js
-│   │   └── report.controller.js
-│   │
-│   ├── services/
-│   │   ├── room.service.js
-│   │   ├── booking.service.js
-│   │   └── report.service.js
-│   │
-│   ├── models/
-│   │   ├── room.model.js
-│   │   ├── booking.model.js
-│   │   └── idempotency.model.js
-│   │
-│   └── utils/
-│       ├── time.util.js
-│       └── error.util.js
-│
-├── tests/
-│   ├── booking.test.js
-│   ├── cancellation.test.js
-│   └── report.test.js
-│
-├── DESIGN.md
-├── package.json
-├── .env.example
-└── README.md
-```
-
----
-
-## ⚙️ Setup Instructions
-
-### 1️⃣ Clone Repository
-
-```bash
-git clone <your-github-repo-url>
-cd meetingroombooking
-```
-
----
-
-### 2️⃣ Install Dependencies
-
-```bash
-npm install
-```
-
----
-
-### 3️⃣ Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-MONGO_URL=mongodb://localhost:27017/meetingroombooking
-PORT=5000
-```
-
----
-
-### 4️⃣ Start the Server
-
-Development mode:
-
-```
-npm run dev
-```
-
-Production mode:
-
-```
-npm start
-```
-
-Server will run at:
-
-```
-http://localhost:5000
-```
-
----
-
 ## 🔗 API Endpoints
 
 ### 🏢 Rooms
@@ -283,6 +185,106 @@ Example:
   "message": "startTime must be before endTime"
 }
 ```
+
+---
+
+## 📂 Project Structure
+
+```
+meetingroombooking/
+│
+├── index.js
+├── src/
+│   ├── app.js
+│   │
+│   ├── routes/
+│   │   ├── room.routes.js
+│   │   ├── booking.routes.js
+│   │   └── report.routes.js
+│   │
+│   ├── controllers/
+│   │   ├── room.controller.js
+│   │   ├── booking.controller.js
+│   │   └── report.controller.js
+│   │
+│   ├── services/
+│   │   ├── room.service.js
+│   │   ├── booking.service.js
+│   │   └── report.service.js
+│   │
+│   ├── models/
+│   │   ├── room.model.js
+│   │   ├── booking.model.js
+│   │   └── idempotency.model.js
+│   │
+│   └── utils/
+│       ├── time.util.js
+│       └── error.util.js
+│
+├── tests/
+│   ├── booking.test.js
+│   ├── cancellation.test.js
+│   └── report.test.js
+│
+├── DESIGN.md
+├── package.json
+├── .env.example
+└── README.md
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone <your-github-repo-url>
+cd meetingroombooking
+```
+
+---
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3️⃣ Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+MONGO_URL=mongodb://localhost:27017/meetingroombooking
+PORT=5000
+```
+
+---
+
+### 4️⃣ Start the Server
+
+Development mode:
+
+```
+npm run dev
+```
+
+Production mode:
+
+```
+npm start
+```
+
+Server will run at:
+
+```
+http://localhost:5000
+```
+
+---
 
 Status Codes:
 

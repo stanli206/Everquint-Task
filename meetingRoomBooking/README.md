@@ -72,7 +72,7 @@ meetingroombooking/
 │
 ├── DESIGN.md
 ├── package.json
-├── .env.example
+├── .env
 └── README.md
 ```
 

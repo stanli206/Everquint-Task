@@ -30,6 +30,8 @@ Each task includes:
 - Assignee (free text)
 - Tags (categorization)
 - Timestamps (createdAt, updatedAt)
+---
+## 📂 Folder structure
 
 src/
 ├── components/           
@@ -54,7 +56,7 @@ src/
 ├── utils/               
 ├── App.jsx              
 └── main.jsx             
-
+---
 ## 🚀 Quick Start
 
 ### Prerequisites

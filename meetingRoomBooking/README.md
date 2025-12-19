@@ -2,7 +2,7 @@
 
 This project is a backend service for managing meeting rooms and bookings.
 It is implemented as part of an interview assignment to demonstrate clean API design,
-business rule validation, idempotency handling, concurrency awareness, and reporting.
+business rule validation, idempotency handling and reporting.
 
 The service is built using **Node.js, Express, and MongoDB** and follows a layered
 architecture for better readability and maintainability.
@@ -72,7 +72,7 @@ meetingroombooking/
 │
 ├── DESIGN.md
 ├── package.json
-├── .env.example
+├── .env
 └── README.md
 ```
 

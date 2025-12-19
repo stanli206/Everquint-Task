@@ -1,16 +1,70 @@
-# React + Vite
+# Team Workflow Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive task management application built with React and Tailwind CSS. This project implements a simplified Kanban-style board for managing team tasks with a custom design system.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🎯 Core Functionality
+- **Kanban Board**: Visual task management with Backlog, In Progress, and Done columns
+- **Task Management**: Full CRUD operations (Create, Read, Update, Delete tasks)
+- **Real-time Updates**: Immediate UI feedback on all operations
+- **Local Storage**: Persistent data storage in browser
 
-## React Compiler
+### 🔍 Advanced Features
+- **Smart Filtering**: Filter tasks by status, priority, and search terms
+- **Full-text Search**: Search across titles, descriptions, assignees, and tags
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **Keyboard Navigation**: Full keyboard accessibility
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🎨 Design System
+- **Custom UI Components**: Built from scratch without external UI libraries
+- **Consistent Styling**: Themed components with unified design tokens
+- **Accessibility First**: ARIA labels, semantic HTML, and focus management
+- **Dark Mode Ready**: Color system prepared for theme switching
 
-## Expanding the ESLint configuration
+### 📊 Task Details
+Each task includes:
+- Title & Description (multi-line)
+- Status (Backlog, In Progress, Done)
+- Priority (Low, Medium, High)
+- Assignee (free text)
+- Tags (categorization)
+- Timestamps (createdAt, updatedAt)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+src/
+├── components/           
+│   ├── ui/              
+│   │   ├── Button.jsx   
+│   │   ├── Card.jsx     
+│   │   ├── Modal.jsx    
+│   │   ├── Tag.jsx      
+│   │   ├── TextInput.jsx
+│   │   ├── TextArea.jsx
+│   │   ├── Select.jsx   
+│   │   └── Toast.jsx    
+│   ├── TaskCard.jsx     
+│   ├── TaskForm.jsx     
+│   ├── TaskBoard.jsx    
+│   ├── Column.jsx       
+│   └── FilterBar.jsx    
+├── hooks/               
+│   ├── useTasks.js      
+│   ├── useLocalStorage.js 
+│   └── useToast.js      
+├── utils/               
+├── App.jsx              
+└── main.jsx             
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18.0 or higher
+- npm 7.0 or higher
+
+### Installation
+
+1. **Clone and setup**
+```bash
+git clone <repository-url>
+cd teamworkflowboard
+npm install

@@ -33,29 +33,37 @@ Each task includes:
 ---
 ## 📂 Folder structure
 
-src/
-├── components/           
-│   ├── ui/              
-│   │   ├── Button.jsx   
-│   │   ├── Card.jsx     
-│   │   ├── Modal.jsx    
-│   │   ├── Tag.jsx      
-│   │   ├── TextInput.jsx
-│   │   ├── TextArea.jsx
-│   │   ├── Select.jsx   
-│   │   └── Toast.jsx    
-│   ├── TaskCard.jsx     
-│   ├── TaskForm.jsx     
-│   ├── TaskBoard.jsx    
-│   ├── Column.jsx       
-│   └── FilterBar.jsx    
-├── hooks/               
-│   ├── useTasks.js      
-│   ├── useLocalStorage.js 
-│   └── useToast.js      
-├── utils/               
-├── App.jsx              
-└── main.jsx             
+teamworkflowboard/
+├── public/                 # assets
+├── src/                    # Source code
+│   ├── components/         # React Components
+│   │   ├── ui/            # Design System Components
+│   │   │   ├── Button.jsx     # Reusable button component
+│   │   │   ├── Card.jsx       # Card component
+│   │   │   ├── Modal.jsx      # Accessible modal
+│   │   │   ├── Tag.jsx        # Status badges and labels
+│   │   │   ├── TextInput.jsx  # Form input fields
+│   │   │   ├── TextArea.jsx   # Multi-line text input
+│   │   │   ├── Select.jsx     # Dropdown componen
+│   │   │   └── Toast.jsx      # Notification system
+│   │   ├── TaskCard.jsx       # Individual task display
+│   │   ├── TaskForm.jsx       # Task creation/editing form
+│   │   ├── TaskBoard.jsx      # Main Kanban board
+│   │   ├── Column.jsx         # Board column component
+│   │   └── FilterBar.jsx      # Filtering
+│   ├── hooks/              # Custom React Hooks
+│   │   ├── useTasks.js         # Task management
+│   │   ├── useLocalStorage.js  # Browser storage 
+│   │   └── useToast.js         # Toast notification system
+│   ├── utils/              
+│   ├── App.jsx             # Root application component
+│   └── main.jsx            # Application entry point
+├── index.html             # HTML entry point
+├── vite.config.js         # Vite configuration
+├── package.json           # Dependencies and scripts
+├── README.md              
+└── tailwind.config.js     # Tailwind CSS configuration  
+
 ---
 ## 🚀 Quick Start
 

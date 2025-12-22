@@ -43,7 +43,7 @@ https://frontend-teamworkflowboard.netlify.app/
 ---
 
 ## 📂 Project Structure
-
+```
 team-workflow-board/
 ├── public/
 │   ├── index.html
@@ -78,6 +78,6 @@ team-workflow-board/
 ├── vite.config.js
 ├── index.html
 └── README.md
-
+```
 
 ---

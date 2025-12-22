@@ -79,5 +79,40 @@ team-workflow-board/
 ├── index.html
 └── README.md
 ```
-
 ---
+
+## User Workflow Steps
+* Phase 1: Initial Setup & Navigation
+
+ ```
+┌─────────────────────────────────────────────┐
+│           User Opens Application            │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│    1. Application loads                     │
+│       • Checks localStorage for existing data│
+│       • Runs migration if needed            │
+│       • Shows sample data if empty          │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│    2. Main Board Display                    │
+│       • Three columns: Backlog, In Progress, │
+│         Done                                │
+│       • Task cards show key info            │
+│       • Filter bar visible                  │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│    User can:                                │
+│    A. Create new task                       │
+│    B. Edit existing task                    │
+│    C. Filter/Search tasks                   │
+│    D. Delete task                           │
+│    E. View task details                     │
+└─────────────────────────────────────────────┘
+```

@@ -116,3 +116,100 @@ team-workflow-board/
 │    E. View task details                     │
 └─────────────────────────────────────────────┘
 ```
+* Phase 2: Task Creation Workflow
+```
+┌─────────────────────────────────────────────┐
+│        User clicks "New Task" button        │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│  Modal opens with task form:                │
+│  • Title field (required)                   │
+│  • Description (required)                   │
+│  • Status dropdown (Backlog/In Progress/Done)│
+│  • Priority dropdown (Low/Medium/High)      │
+│  • Assignee field                           │
+│  • Tags field (comma-separated)             │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│        User fills form and submits          │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│    Validation occurs:                       │
+│    • Title not empty? → ✓                   │
+│    • Description not empty? → ✓             │
+│    • If valid: Save to localStorage         │
+│    • If invalid: Show error messages        │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│  Success:                                    │
+│  • Task appears in appropriate column       │
+│  • Success toast notification               │
+│  • Modal closes                             │
+│                                              │
+│  Error:                                      │
+│  • Error messages shown on form             │
+│  • Form remains open                        │
+└─────────────────────────────────────────────┘
+```
+## Task Management Workflow
+```
+┌─────────────────────────────────────────────┐
+│          User interacts with Task           │
+└───────────────────┬─────────────────────────┘
+                    │
+        ┌───────────┴───────────┐
+        ▼                       ▼
+┌──────────────┐        ┌──────────────┐
+│  Edit Task   │        │  Delete Task │
+└──────┬───────┘        └──────┬───────┘
+       │                       │
+       ▼                       ▼
+┌──────────────┐        ┌──────────────┐
+│ Opens same   │        │ Confirmation │
+│ form with    │        │ dialog       │
+│ pre-filled   │        │ "Are you     │
+│ values       │        │ sure?"       │
+└──────┬───────┘        └──────┬───────┘
+       │                       │
+       ▼                       ▼
+┌──────────────┐        ┌──────────────┐
+│ Save updates │        │ If Yes:      │
+│ → Toast      │        │ Remove task  │
+│ → Board      │        │ → Toast      │
+│ refreshes    │        │ → Board      │
+└──────────────┘        │ refreshes    │
+                        │ If No:       │
+                        │ Cancel       │
+                        └──────────────┘
+```
+## Phase 4: Filtering & Searching Workflow
+```
+┌─────────────────────────────────────────────┐
+│       User wants to find specific task      │
+└───────────────────┬─────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────┐
+│    Uses Filter Bar:                         │
+│    1. Search box - type keywords            │
+│       • Searches: title, description,       │
+│         assignee, tags                      │
+│       • Updates in real-time                │
+│                                              │
+│    2. Status dropdown - select one status   │
+│                                              │
+│    3. Priority dropdown - select priority   │
+│                                              │
+│    4. "Clear All" button - reset filters    │
+└───────────────────┬─────────────────────────┘
+
+```
+---

@@ -46,7 +46,8 @@ https://frontend-teamworkflowboard.netlify.app/
 
 team-workflow-board/
 ├── public/
-│   
+│   ├── index.html
+│   └── favicon.ico
 ├── src/
 │   ├── components/
 │   │   ├── ui/
@@ -77,5 +78,6 @@ team-workflow-board/
 ├── vite.config.js
 ├── index.html
 └── README.md
+
 
 ---

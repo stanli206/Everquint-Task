@@ -1,85 +1,19 @@
-# Meeting Room Booking Service
-
-This project is a backend service for managing meeting rooms and bookings.
-It is implemented as part of an interview assignment to demonstrate clean API design,
-business rule validation, idempotency handling and reporting.
-
-The service is built using **Node.js, Express, and MongoDB** and follows a layered
-architecture for better readability and maintainability.
-
----
-
-## 📌 Features Overview
-
-* Create and list meeting rooms
-* Create bookings with strict business rules
-* Prevent overlapping bookings for the same room
-* Support idempotent booking creation using `Idempotency-Key`
-* Cancel bookings with a 1-hour grace period
-* Generate room utilization reports
-* Clear validation and error handling
-* Beginner-readable but industry-standard structure
-
----
-
-## 🛠 Tech Stack
-
-* **Backend**: Node.js, Express
-* **Database**: MongoDB (Mongoose)
-* **Runtime**: Node.js (ES Modules)
-* **Dev Tools**: Nodemon
-* **Testing**: Jest
-
----
-
-## 📂 Project Structure
-
-```
-meetingroombooking/
-│
-├── index.js
-├── src/
-│   ├── app.js
-│   │
-│   ├── routes/
-│   │   ├── room.routes.js
-│   │   ├── booking.routes.js
-│   │   └── report.routes.js
-│   │
-│   ├── controllers/
-│   │   ├── room.controller.js
-│   │   ├── booking.controller.js
-│   │   └── report.controller.js
-│   │
-│   ├── services/
-│   │   ├── room.service.js
-│   │   ├── booking.service.js
-│   │   └── report.service.js
-│   │
-│   ├── models/
-│   │   ├── room.model.js
-│   │   ├── booking.model.js
-│   │   └── idempotency.model.js
-│   │
-│   └── utils/
-│       ├── time.util.js
-│       └── error.util.js
-│
-├── tests/
-│   ├── booking.test.js
-│   ├── cancellation.test.js
-│   └── report.test.js
-│
-├── DESIGN.md
-├── package.json
-├── .env
-└── README.md
+## 🧪 Running Tests
+```terminal
+npm test
 ```
 
+Tests include:
+
+* Booking validation rules
+* Overlapping booking checks
+* Cancellation grace period
+* Room utilization calculation
 ---
+
 ## 🔗 API Endpoints
 
-### 🏢 Rooms
+#### 🏢 Rooms
 
 #### Create Room
 
@@ -232,6 +166,84 @@ Example:
 ```
 
 
+
+# Meeting Room Booking Service
+
+This project is a backend service for managing meeting rooms and bookings.
+It is implemented as part of an interview assignment to demonstrate clean API design,
+business rule validation, idempotency handling and reporting.
+
+The service is built using **Node.js, Express, and MongoDB** and follows a layered
+architecture for better readability and maintainability.
+
+---
+
+## 📌 Features Overview
+
+* Create and list meeting rooms
+* Create bookings with strict business rules
+* Prevent overlapping bookings for the same room
+* Support idempotent booking creation using `Idempotency-Key`
+* Cancel bookings with a 1-hour grace period
+* Generate room utilization reports
+* Clear validation and error handling
+* Beginner-readable but industry-standard structure
+
+---
+
+## 🛠 Tech Stack
+
+* **Backend**: Node.js, Express
+* **Database**: MongoDB (Mongoose)
+* **Runtime**: Node.js (ES Modules)
+* **Dev Tools**: Nodemon
+* **Testing**: Jest
+
+---
+
+## 📂 Project Structure
+
+```
+meetingroombooking/
+│
+├── index.js
+├── src/
+│   ├── app.js
+│   │
+│   ├── routes/
+│   │   ├── room.routes.js
+│   │   ├── booking.routes.js
+│   │   └── report.routes.js
+│   │
+│   ├── controllers/
+│   │   ├── room.controller.js
+│   │   ├── booking.controller.js
+│   │   └── report.controller.js
+│   │
+│   ├── services/
+│   │   ├── room.service.js
+│   │   ├── booking.service.js
+│   │   └── report.service.js
+│   │
+│   ├── models/
+│   │   ├── room.model.js
+│   │   ├── booking.model.js
+│   │   └── idempotency.model.js
+│   │
+│   └── utils/
+│       ├── time.util.js
+│       └── error.util.js
+│
+├── tests/
+│   ├── booking.test.js
+│   ├── cancellation.test.js
+│   └── report.test.js
+│
+├── DESIGN.md
+├── package.json
+├── .env
+└── README.md
+```
 ---
 
 ## ⚙️ Setup Instructions
@@ -291,21 +303,6 @@ Status Codes:
 * 400 – Validation errors
 * 404 – Resource not found
 * 409 – Booking conflict
-
----
-
-## 🧪 Running Tests
-
-```bash
-npm test
-```
-
-Tests include:
-
-* Booking validation rules
-* Overlapping booking checks
-* Cancellation grace period
-* Room utilization calculation
 
 ---
 

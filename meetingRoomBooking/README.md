@@ -5,39 +5,51 @@
 git clone <repository-url>
 cd meetingRoomBooking
 ```
+### 2️⃣ Install Dependencies
 
+```terminal
+npm install
+```
+---
+### 3️⃣ Environment Variables
+Create a `.env` file in the project root:
+```env
+MONGO_URL=mongodb://<yourDBconnectionString>/meetingroombooking
+PORT=5000
+```
+---
+
+### 4️⃣ Start the Server
+Development mode:
+```
+npm run dev
+```
+Server will run at:
+```
+http://localhost:5000
+```
 ## 🧪 Running Tests
 Tests use in-memory MongoDB, so no external DB is required.
 ```terminal run
  npm test
 ```
-## Expected output:
+Expected output:
 * PASS booking.validation.test.js
 * PASS booking.overlap.test.js
 
-## 📌 API Endpoints [https://backend-meetingroombooking.onrender.com/]
+### 📌API Endpoints [ https://backend-meetingroombooking.onrender.com/ ]
 ## Rooms
 * POST /rooms – Create a room
 * GET /rooms – List rooms
-
-# Bookings
-POST /bookings – Create booking
-GET /bookings – List bookings
-POST /bookings/:id/cancel – Cancel booking
-
-# Reports
+## Bookings
+* POST /bookings – Create booking
+* GET /bookings – List bookings
+* POST /bookings/:id/cancel – Cancel booking
+## Reports
 GET /reports/room-utilization?from=YYYY-MM-DD&to=YYYY-MM-DD
-
-```
-Tests include:
-
-* Booking validation rules
-* Overlapping booking checks
-* Cancellation grace period
-* Room utilization calculation
 ```
 ```
-#### Create Room
+## Create Room
 POST /rooms
 Body:
 ```json
@@ -49,36 +61,21 @@ Body:
 }
 ```
 ---
-
-#### List Rooms
-
+## List Rooms
 ```
 GET /rooms
 ```
-
-Optional Query Params:
-
-* `minCapacity`
-* `amenity`
-
 ---
-
 ### 📅 Bookings
-
 #### Create Booking
-
 ```
 POST /bookings
 ```
-
 Headers:
-
 ```
 Idempotency-Key: unique-key-123
 ```
-
 Body:
-
 ```json
 {
   "roomId": "<ROOM_ID>",
@@ -98,47 +95,34 @@ Business Rules:
 * Duplicate requests with same Idempotency-Key return same booking
 
 ---
-
-#### List Bookings
-
+## List Bookings
 ```
 GET /bookings
 ```
-
 Query Params:
-
 * `roomId`
 * `from`
 * `to`
 * `limit`
 * `offset`
-
 ---
 
-#### Cancel Booking
-
+## Cancel Booking
 ```
 POST /bookings/{id}/cancel
 ```
-
 Rules:
-
 * Can be cancelled only up to 1 hour before startTime
 * Cancelling an already cancelled booking returns same booking
 * Cancelled bookings do not block new bookings
 
 ---
-
 ### 📊 Reports
-
 #### Room Utilization Report
-
 ```
 GET /reports/room-utilization?from=2025-01-01&to=2025-01-10
 ```
-
 Response:
-
 ```json
 [
   {
@@ -255,59 +239,6 @@ meetingroombooking/
 ├── .env
 └── README.md
 ```
----
-
-## ⚙️ Setup Instructions
-
-### 1️⃣ Clone Repository
-
-```bash
-git clone <your-github-repo-url>
-cd meetingroombooking
-```
-
----
-
-### 2️⃣ Install Dependencies
-
-```bash
-npm install
-```
-
----
-
-### 3️⃣ Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-MONGO_URL=mongodb://localhost:27017/meetingroombooking
-PORT=5000
-```
-
----
-
-### 4️⃣ Start the Server
-
-Development mode:
-
-```
-npm run dev
-```
-
-Production mode:
-
-```
-npm start
-```
-
-Server will run at:
-
-```
-http://localhost:5000
-```
-
----
 
 Status Codes:
 

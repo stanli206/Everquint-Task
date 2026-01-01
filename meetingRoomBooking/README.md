@@ -1,28 +1,45 @@
-## 🧪 Running Tests
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the repository
 ```terminal
-npm test
+git clone <repository-url>
+cd meetingRoomBooking
 ```
 
+## 🧪 Running Tests
+Tests use in-memory MongoDB, so no external DB is required.
+```terminal run
+ npm test
+```
+## Expected output:
+* PASS booking.validation.test.js
+* PASS booking.overlap.test.js
+
+## 📌 API Endpoints [https://backend-meetingroombooking.onrender.com/]
+## Rooms
+* POST /rooms – Create a room
+* GET /rooms – List rooms
+
+# Bookings
+POST /bookings – Create booking
+GET /bookings – List bookings
+POST /bookings/:id/cancel – Cancel booking
+
+# Reports
+GET /reports/room-utilization?from=YYYY-MM-DD&to=YYYY-MM-DD
+
+```
 Tests include:
 
 * Booking validation rules
 * Overlapping booking checks
 * Cancellation grace period
 * Room utilization calculation
----
-
-## 🔗 API Endpoints
-
-#### 🏢 Rooms
-
+```
+```
 #### Create Room
-
-```
 POST /rooms
-```
-
 Body:
-
 ```json
 {
   "name": "Conference Room A",
@@ -31,12 +48,6 @@ Body:
   "amenities": ["Projector", "Whiteboard"]
 }
 ```
-
-Rules:
-
-* Room name must be unique (case-insensitive)
-* Capacity must be >= 1
-
 ---
 
 #### List Rooms

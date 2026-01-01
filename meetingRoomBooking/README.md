@@ -47,8 +47,7 @@ Expected output:
 * POST /bookings/:id/cancel – Cancel booking
 ## Reports
 GET /reports/room-utilization?from=YYYY-MM-DD&to=YYYY-MM-DD
-```
-```
+
 ## Create Room
 POST /rooms
 Body:

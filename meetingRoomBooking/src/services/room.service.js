@@ -6,7 +6,7 @@ export const createRoom = async (data) => {
     throw new Error("Room data is required");
   }
 
-  const { name, capacity } = data;
+  const { name, capacity, amenities } = data;
 
   //  name validation
   if (!name || typeof name !== "string" || name.trim() === "") {
@@ -20,6 +20,16 @@ export const createRoom = async (data) => {
 
   if (typeof capacity !== "number" || capacity < 1) {
     throw new Error("Capacity must be a number and at least 1");
+  }
+  // amenities validation
+  let amenitiesArray = [];
+
+  if (amenities !== undefined) {
+    if (!Array.isArray(amenities)) {
+      throw new Error("Amenities must be an array");
+    }
+
+    amenitiesArray = amenities;
   }
 
   // unique room name check (case-insensitive)
@@ -35,6 +45,7 @@ export const createRoom = async (data) => {
   return await Room.create({
     name: name.trim(),
     capacity,
+    amenities: amenitiesArray,
   });
 };
 

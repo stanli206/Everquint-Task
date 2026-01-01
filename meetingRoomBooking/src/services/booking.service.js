@@ -1,7 +1,7 @@
 import Booking from "../models/booking.model.js";
 import Room from "../models/room.model.js";
 import Idempotency from "../models/idempotency.model.js";
-import { AppError } from "../utils/apperror.util.js";
+import { AppError } from "../utils/appError.util.js";
 
 export const createBooking = async (data, key) => {
   // Room exists?

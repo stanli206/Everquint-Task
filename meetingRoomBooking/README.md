@@ -28,7 +28,7 @@ Server will run at:
 ```
 http://localhost:5000
 ```
-## 🧪 Running Tests
+## 5️⃣🧪 Running Tests
 Tests use in-memory MongoDB, so no external DB is required.
 ```terminal run
  npm test
@@ -37,7 +37,7 @@ Expected output:
 * PASS booking.validation.test.js
 * PASS booking.overlap.test.js
 
-### 📌API Endpoints [ https://backend-meetingroombooking.onrender.com/ ]
+### 6️⃣📌API Endpoints [ https://backend-meetingroombooking.onrender.com/ ]
 ## Rooms
 * POST /rooms – Create a room
 * GET /rooms – List rooms
@@ -135,19 +135,12 @@ Response:
 ]
 ```
 
-Utilization Formula:
-
-```
-total booked hours / total business hours
-```
-
 Business hours:
 
 * Monday to Friday
 * 08:00 AM to 08:00 PM (12 hours per day)
 
 ---
-
 ## ❌ Error Handling
 
 All errors are returned in JSON format with proper HTTP status codes.
@@ -160,9 +153,6 @@ Example:
   "message": "startTime must be before endTime"
 }
 ```
-
-
-
 # Meeting Room Booking Service
 
 This project is a backend service for managing meeting rooms and bookings.

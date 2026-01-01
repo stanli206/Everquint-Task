@@ -41,7 +41,6 @@ const Modal = ({ isOpen, onClose, title, children, size = "md" }) => {
           aria-hidden="true"
         />
 
-        {/* This element is to trick the browser into centering the modal contents */}
         <span
           className="hidden sm:inline-block sm:align-middle sm:h-screen"
           aria-hidden="true"

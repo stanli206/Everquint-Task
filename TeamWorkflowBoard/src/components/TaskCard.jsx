@@ -1,39 +1,49 @@
-import React from 'react'
-import { FaEdit, FaTrash, FaUser, FaClock, FaFlag } from 'react-icons/fa'
-import Card from './ui/Card'
-import Tag from './ui/Tag'
-import Button from './ui/Button'
+import React from "react";
+import { FaEdit, FaTrash, FaUser, FaClock, FaFlag } from "react-icons/fa";
+import Card from "./ui/Card";
+import Tag from "./ui/Tag";
+import Button from "./ui/Button";
 
 const TaskCard = ({ task, onEdit, onDelete }) => {
   const getPriorityColor = (priority) => {
     switch (priority) {
-      case 'High': return 'red'
-      case 'Medium': return 'yellow'
-      case 'Low': return 'green'
-      default: return 'gray'
+      case "High":
+        return "red";
+      case "Medium":
+        return "yellow";
+      case "Low":
+        return "green";
+      default:
+        return "gray";
     }
-  }
+  };
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Done': return 'green'
-      case 'In Progress': return 'blue'
-      case 'Backlog': return 'gray'
-      default: return 'gray'
+      case "Done":
+        return "green";
+      case "In Progress":
+        return "blue";
+      case "Backlog":
+        return "gray";
+      default:
+        return "gray";
     }
-  }
+  };
 
   const formatRelativeTime = (dateString) => {
-    const date = new Date(dateString)
-    const now = new Date()
-    const diffInSeconds = Math.floor((now - date) / 1000)
-    
-    if (diffInSeconds < 60) return 'just now'
-    if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`
-    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`
-    if (diffInSeconds < 2592000) return `${Math.floor(diffInSeconds / 86400)}d ago`
-    return date.toLocaleDateString()
-  }
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInSeconds = Math.floor((now - date) / 1000);
+
+    if (diffInSeconds < 60) return "just now";
+    if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+    if (diffInSeconds < 86400)
+      return `${Math.floor(diffInSeconds / 3600)}h ago`;
+    if (diffInSeconds < 2592000)
+      return `${Math.floor(diffInSeconds / 86400)}d ago`;
+    return date.toLocaleDateString();
+  };
 
   return (
     <Card className="hover:shadow-lg transition-shadow duration-200">
@@ -72,23 +82,24 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
             </Button>
           </div>
         </div>
-        
+
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">
           {task.description}
         </p>
-        
+
         <div className="flex flex-wrap gap-1 mb-3">
-          {task.tags && task.tags.map((tag, index) => (
-            <Tag key={index} color="gray" size="sm">
-              {tag}
-            </Tag>
-          ))}
+          {task.tags &&
+            task.tags.map((tag, index) => (
+              <Tag key={index} color="gray" size="sm">
+                {tag}
+              </Tag>
+            ))}
         </div>
-        
+
         <div className="flex justify-between items-center text-sm text-gray-500">
           <div className="flex items-center gap-2">
             <FaUser className="text-gray-400" />
-            <span>{task.assignee || 'Unassigned'}</span>
+            <span>{task.assignee || "Unassigned"}</span>
           </div>
           <div className="flex items-center gap-1">
             <FaClock className="text-gray-400" />
@@ -99,7 +110,7 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
         </div>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default TaskCard
+export default TaskCard;

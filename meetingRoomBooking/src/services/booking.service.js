@@ -1,75 +1,85 @@
 import Booking from "../models/booking.model.js";
 import Room from "../models/room.model.js";
 import Idempotency from "../models/idempotency.model.js";
+import { AppError } from "../utils/apperror.util.js";
 
 export const createBooking = async (data, key) => {
-  // 1. Room exists?
+  // Room exists?
   const room = await Room.findById(data.roomId);
   if (!room) {
-    const err = new Error("Room not found");
+    const err = new AppError("Room not found");
     err.code = 404;
     throw err;
   }
 
-  // 2. Time validation
+  // Time validation
   const start = new Date(data.startTime);
   const end = new Date(data.endTime);
 
   if (start >= end) {
-    throw new Error("startTime must be before endTime");
+    throw new AppError("startTime must be before endTime");
   }
 
   const duration = (end - start) / (1000 * 60);
   if (duration < 15 || duration > 240) {
-    throw new Error("Booking duration must be 15 to 240 minutes");
+    throw new AppError("Booking duration must be 15 to 240 minutes");
   }
 
-  // 3. Working hours (Mon–Fri, 8–20)
+  // Working hours (Mon–Fri, 8–20)
   const day = start.getDay();
   const hour = start.getHours();
   if (day === 0 || day === 6 || hour < 8 || hour >= 20) {
-    throw new Error("Booking allowed only Mon–Fri, 8AM–8PM");
+    throw new AppError("Booking allowed only Mon–Fri, 8AM–8PM");
   }
 
-  // 4. Idempotency
+  // Idempotency
   if (key) {
     const existing = await Idempotency.findOne({
       key,
-      organizerEmail: data.organizerEmail
+      organizerEmail: data.organizerEmail,
     });
     if (existing) return existing.booking;
   }
 
-  // 5. Overlap check
+  // Overlap check
   const overlap = await Booking.findOne({
     roomId: data.roomId,
     status: "confirmed",
     startTime: { $lt: end },
-    endTime: { $gt: start }
+    endTime: { $gt: start },
   });
 
   if (overlap) {
-    const err = new Error("Overlapping booking exists");
-    err.code = 409;
-    throw err;
+    throw new AppError("Overlapping booking exists", 409);
   }
+  // if (overlap) {
+  //   const err = new AppError("Overlapping booking exists");
+  //   err.code = 409;
+  //   throw err;
+  // }
 
-  // 6. Create booking
+  // Create booking
   const booking = await Booking.create(data);
 
-  // 7. Save idempotency
+  // Save idempotency
   if (key) {
     await Idempotency.create({
       key,
       organizerEmail: data.organizerEmail,
-      booking
+      booking: booking.toObject(),
     });
   }
 
   return booking;
 };
 
-export const listBookings = async ({ roomId, from, to, limit = 10, offset = 0 }) => {
+export const listBookings = async ({
+  roomId,
+  from,
+  to,
+  limit = 10,
+  offset = 0,
+}) => {
   const filter = {};
 
   if (roomId) filter.roomId = roomId;

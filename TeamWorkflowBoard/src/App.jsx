@@ -9,7 +9,6 @@ import TaskForm from "./components/TaskForm";
 import Toast from "./components/ui/Toast";
 
 function App() {
-  
   const {
     tasks,
     addTask,

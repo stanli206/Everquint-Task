@@ -1,19 +1,41 @@
 import Room from "../models/room.model.js";
 
 export const createRoom = async (data) => {
-  if (data.capacity < 1) {
-    throw new Error("Capacity must be at least 1");
+  // 1data itself check
+  if (!data || typeof data !== "object") {
+    throw new Error("Room data is required");
   }
 
+  const { name, capacity } = data;
+
+  //  name validation
+  if (!name || typeof name !== "string" || name.trim() === "") {
+    throw new Error("Room name is required");
+  }
+
+  // capacity validation
+  if (capacity === undefined || capacity === null) {
+    throw new Error("Capacity is required");
+  }
+
+  if (typeof capacity !== "number" || capacity < 1) {
+    throw new Error("Capacity must be a number and at least 1");
+  }
+
+  // unique room name check (case-insensitive)
   const existing = await Room.findOne({
-    name: new RegExp(`^${data.name}$`, "i")
+    name: new RegExp(`^${name}$`, "i"),
   });
 
   if (existing) {
     throw new Error("Room name must be unique");
   }
 
-  return await Room.create(data);
+  //finally create
+  return await Room.create({
+    name: name.trim(),
+    capacity,
+  });
 };
 
 export const listRooms = async (query) => {

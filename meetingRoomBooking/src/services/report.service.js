@@ -1,10 +1,6 @@
 import Room from "../models/room.model.js";
 import Booking from "../models/booking.model.js";
 
-/**
- * Calculate total business hours between two dates
- * Business hours: Mon–Fri, 08:00–20:00 (12 hours/day)
- */
 function calculateBusinessHours(from, to) {
   let totalHours = 0;
   let current = new Date(from);
@@ -30,12 +26,11 @@ export const roomUtilization = async (from, to) => {
   const businessHours = calculateBusinessHours(from, to);
 
   for (const room of rooms) {
-
     const bookings = await Booking.find({
       roomId: room._id,
       status: "confirmed",
       startTime: { $lt: new Date(to) },
-      endTime: { $gt: new Date(from) }
+      endTime: { $gt: new Date(from) },
     });
 
     let totalBookedHours = 0;
@@ -44,9 +39,7 @@ export const roomUtilization = async (from, to) => {
       const start = new Date(
         Math.max(new Date(booking.startTime), new Date(from))
       );
-      const end = new Date(
-        Math.min(new Date(booking.endTime), new Date(to))
-      );
+      const end = new Date(Math.min(new Date(booking.endTime), new Date(to)));
 
       const hours = (end - start) / (1000 * 60 * 60);
       totalBookedHours += hours;
@@ -56,9 +49,10 @@ export const roomUtilization = async (from, to) => {
       roomId: room._id,
       roomName: room.name,
       totalBookingHours: Number(totalBookedHours.toFixed(2)),
-      utilizationPercent: businessHours === 0
-        ? 0
-        : Number((totalBookedHours / businessHours).toFixed(2))
+      utilizationPercent:
+        businessHours === 0
+          ? 0
+          : Number((totalBookedHours / businessHours).toFixed(2)),
     });
   }
 

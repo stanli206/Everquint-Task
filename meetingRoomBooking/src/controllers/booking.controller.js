@@ -8,7 +8,7 @@ export const createBooking = async (req, res) => {
     );
     res.status(201).json(booking);
   } catch (err) {
-    res.status(err.code || 400).json({ error: err.message });
+    res.status(err.statusCode || 400).json({ error: err.message });
   }
 };
 
@@ -23,6 +23,8 @@ export const cancelBooking = async (req, res) => {
     const booking = await service.cancelBooking(req.params.id);
     res.json(booking);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(err.statusCode || 400).json({
+      error: err.message,
+    });
   }
 };

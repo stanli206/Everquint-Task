@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const idempotencySchema = new mongoose.Schema({
-  key: String,
-  organizerEmail: String,
-  response: Object
+  key: { type: String, required: true },
+  organizerEmail: { type: String, required: true },
+  booking: { type: Object, required: true },
 });
 
 idempotencySchema.index({ key: 1, organizerEmail: 1 }, { unique: true });

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
@@ -19,6 +19,8 @@
     "nodemon": "^3.1.11"
   },
   "devDependencies": {
-    "jest": "^30.2.0"
+    "jest": "^30.2.0",
+    "mongodb-memory-server": "^11.0.1",
+    "supertest": "^7.1.4"
   }
 }

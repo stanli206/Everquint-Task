@@ -49,7 +49,9 @@ Expected output:
 GET /reports/room-utilization?from=YYYY-MM-DD&to=YYYY-MM-DD
 
 ## Create Room
+```
 POST /rooms
+```
 Body:
 ```json
 {
